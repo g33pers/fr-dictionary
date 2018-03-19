@@ -1,0 +1,256 @@
+body {
+	background-color: #fffffa;
+	height: 100%;
+	position: absolute;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.card{
+	box-shadow: 3px 3px 2px rgba(0,0,0,0.2);
+}
+.card.interactive{
+	display: inline-block;
+	cursor: pointer;
+	-webkit-transition: translate 0.2s , color 0.2s , background-color 0.2s; /* Safari */
+    transition: translate 0.2s , color 0.2s , background-color 0.2s;
+}
+.card.interactive:hover{
+	box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
+	transform: translate(-2px, -2px);
+	position: relative;
+}
+
+.dictionary-words,
+.dictionary-definition,
+.dictionary-words-hint {
+	width: 250px;
+	color: #eca72c;
+	display: inline-block;
+	vertical-align: top;
+	
+}
+.dictionary-words {
+	color: #fffffa;
+}
+.dictionary-words {
+	background-color: #44a1a0;
+	height: calc( 100% - 38px );
+	overflow-y: auto;
+	position: relative;
+	top: 38px;
+}
+.dictionary-words-hint {
+	width: 230px;
+	height: calc( 100% - 38px );
+	position: absolute;
+	top: 38px;
+	left:0;
+	pointer-events: none;
+}
+.dictionary-words-hint.previous-hint:before,
+.dictionary-words-hint.next-hint:after{
+	content: "";
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 45px;
+	background-color: red;
+	left: 0;
+}
+.dictionary-words-hint.previous-hint:before{
+	top: 0;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#44a1a0+0,a1dbff+100 */
+	background: -moz-linear-gradient(top, #44a1a0 0%, rgba(68,161,160,0) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #44a1a0 0%,rgba(68,161,160,0) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #44a1a0 0%,rgba(68,161,160,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#44a1a0', endColorstr='rgba(68,161,160,0)',GradientType=0 ); /* IE6-9 */
+}
+.dictionary-words-hint.next-hint:after{
+	bottom: 0;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#44a1a0+0,a1dbff+100 */
+	background: -moz-linear-gradient(top, rgba(68,161,160,0) 0%, #44a1a0 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(68,161,160,0) 0%,#44a1a0 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(68,161,160,0) 0%,#44a1a0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(68,161,160,0)', endColorstr='#44a1a0',GradientType=0 ); /* IE6-9 */
+}
+.dictionary-definition {
+	padding: 30px;
+	width: calc( 100% - 310px );
+	position: absolute;
+	top: 38px;
+	height: calc( 100% - 98px );
+	overflow-y: auto;
+}
+.dictionary-definition .placeholder {
+	background-image: url(images/readingDuo.svg);
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.definition-title {
+	color: #fffffa;
+	background-color: #31263e;
+	padding: 30px;
+}
+.definition-title h1:first-letter {
+	text-transform: uppercase;
+}
+.definition-title .related-title,
+.definition-title .gender-title,
+.definition-title .infinitive-title,
+.definition-title .pos-title{
+	font-weight: 600;
+	margin-right: 4px;
+}
+.definition-title .related-words{
+	margin: 4px;
+	background-color: #fffffa;
+	color: #31263e;
+	padding: 4px;
+}
+.definition-title .gender,
+.definition-title .infinitive,
+.definition-title .pos{
+	margin-left: 2px;
+	margin-right: 4px;
+	padding: 2px;
+	font-weight: 600;
+	color: #eca72c;
+}
+.definition-title .related-words:hover{
+	background-color: #eca72c;
+	color: #0d5c63;
+}
+.definition-translations,
+.lessons {
+	margin-top: 15px;
+	padding: 20px;
+	border: 1px solid #e7e7e7;
+}
+.lessons {
+	margin-bottom@ 30px;
+}
+.lessons .lessons-title {
+	margin-right: 4px;
+	color: #31263e;
+	font-weight: 600;
+}
+.lessons .lesson {
+	margin: 4px;
+	background-color: #31263e;
+	color: #fffffa;
+	padding: 4px;
+}
+.definition-translations .translation {
+	text-indent: 15px;
+	position: relative;
+}
+.definition-translations .translation:before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 100%;
+	background-color: #eca72c;
+	top: 6px;
+	left: -4px;
+	position: absolute;
+	display: block;
+}
+
+
+ul.words {
+  list-style-type: none;
+}
+ul.words{
+	padding-left: 20px;
+	margin-top: 35px;
+}
+
+.dictionary-words .alphabet-divider {
+	background-color: #fffffa;
+	color: #44a1a0;
+	font-weight: 600;
+	padding: 5px;
+	padding-left: 25px;
+	width: 30px;
+	margin-left: -20px;
+}
+.dictionary-words .list-word {
+	cursor: pointer;
+	padding: 5px;
+}
+.dictionary-words .list-word:hover {
+	text-decoration: underline;
+}
+.dictionary-words .list-word.current-word {
+	font-weight: 600;
+}
+.alphabet-shortcuts{
+	position: absolute;
+	padding-left: 5px;
+	top: 0;
+	z-index: 100;
+	margin: 0;
+	white-space: nowrap;
+	width: calc(100% - 5px);
+	background-color: #0d5c63;
+}
+.alphabet-shortcuts .alpha-link{
+	padding: 7px;
+	color: #eca72c;
+	font-weight: 600;
+	font-size: 20px;
+	display: inline-block;
+	cursor: pointer;
+	position: relative;
+	
+	
+}
+.alphabet-shortcuts .alpha-link.empty{
+	opacity: 0.5;
+	pointer-events: none;
+}
+.alphabet-shortcuts .alpha-link:before{
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	-webkit-transition: padding 1s , color 1s; /* Safari */
+    transition: padding 1s , color 1s;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	z-index: -1;
+}
+
+.alpha-link.selected {
+	color: #0d5c63;
+	font-weight: 600;
+	background-color: #eca72c ;
+}
+
+.alpha-link.selected:before {
+	height: calc( 100% + 15px );
+	color: #0d5c63;
+	font-weight: 600;
+	background-color: #eca72c ;
+}
+/* 
+#44355b - light purple - main background
+#31263e - dark purple - accents
+#221e22 - near black - text
+#eca72c - yellow - highlights
+#ee5622 - orange - icons
+ */
+ 
+/* #fffffa - cream
+#0d5c63 - dark blue/green
+#44a1a0 - light green/blue
+#78cdd7 - bright, light blue
+#247b7b - mid green/blue */
