@@ -4,7 +4,10 @@
 # updates
 
 v0.01 - initial upload and functionality
+
 v0.02 - update to readme
+
+v0.021 - add analytics
 
 
 # overview
