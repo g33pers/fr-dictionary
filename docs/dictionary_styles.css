@@ -37,16 +37,14 @@ body {
 }
 .dictionary-words {
 	background-color: #44a1a0;
-	height: calc( 100% - 38px );
+	height: 100%;
 	overflow-y: auto;
 	position: relative;
-	top: 38px;
 }
 .dictionary-words-hint {
 	width: 230px;
-	height: calc( 100% - 38px );
+	height: 100%;
 	position: absolute;
-	top: 38px;
 	left:0;
 	pointer-events: none;
 }
@@ -80,7 +78,6 @@ body {
 	padding: 30px;
 	width: calc( 100% - 310px );
 	position: absolute;
-	top: 38px;
 	height: calc( 100% - 98px );
 	overflow-y: auto;
 }
@@ -190,7 +187,6 @@ ul.words{
 	font-weight: 600;
 }
 .alphabet-shortcuts{
-	position: absolute;
 	padding-left: 5px;
 	top: 0;
 	z-index: 100;
@@ -198,6 +194,7 @@ ul.words{
 	white-space: nowrap;
 	width: calc(100% - 5px);
 	background-color: #0d5c63;
+	z-index: 20;
 }
 .alphabet-shortcuts .alpha-link{
 	padding: 7px;
@@ -218,7 +215,7 @@ ul.words{
 	content: "";
 	display: block;
 	width: 100%;
-	height: 100%;
+	height: 0;
 	-webkit-transition: padding 1s , color 1s; /* Safari */
     transition: padding 1s , color 1s;
 	position: absolute;
@@ -226,7 +223,7 @@ ul.words{
 	left: 0;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
-	z-index: -1;
+	z-index: 10;
 }
 
 .alpha-link.selected {
@@ -236,11 +233,69 @@ ul.words{
 }
 
 .alpha-link.selected:before {
-	height: calc( 100% + 15px );
+	top: 100%;
+	height: 15px;
 	color: #0d5c63;
 	font-weight: 600;
 	background-color: #eca72c ;
 }
+
+
+.dictionary-words .expand{
+	display: none;
+}
+
+@media all and (max-width: 440px) {
+	
+	.mobile .alpha-link.selected:before {
+		display:none;
+	}
+	
+	.mobile .alphabet-shortcuts {
+		white-space: normal;
+	}
+	.mobile .dictionary-words-hint {
+		display: none;
+	}
+	.mobile .dictionary-definition {
+		padding: 15px;
+		width: calc( 100% - 75px );
+		left: 44px;
+		z-index: -1;
+	}
+	
+	.mobile .dictionary-words{
+		width: calc(100% - 44px);
+		z-index: 10;
+		position: absolute;
+		left: calc(-100% + 44px);
+		overflow-y: hidden;
+		
+		-webkit-transition: left 0.125s ; /* Safari */
+		transition: left 0.125s ;
+	}
+
+	.mobile .dictionary-words.active{
+		left: 0;
+		overflow-y: auto;
+	}
+	
+	.mobile .dictionary-words .expand{
+		display: block;
+		position: fixed;
+		width: 54px;
+		height: 100%;
+		background-color: #eca72c;
+		right: calc(100% - 44px);
+		cursor: pointer;
+		-webkit-transition: right 0.125s ; /* Safari */
+		transition: right 0.125s ;
+	}
+	.mobile .dictionary-words.active .expand{
+		right: 0;
+	}
+}
+
 /* 
 #44355b - light purple - main background
 #31263e - dark purple - accents

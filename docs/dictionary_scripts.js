@@ -16,14 +16,14 @@ $(document).ready( function() {
 	//word list with word data, part of speech info etc
 	$.getJSON( vocabSource , function( data ) {
 		
-		var items = [];
-		
-		var vobab_list = [];
-		
 		data.vocab_overview.sort(function(a, b) {
-			return a.word_string > b.word_string;
+
+			if( a.word_string > b.word_string ){
+				return 1;
+			}
+			return -1 ;
 		});
-		
+
 		let currentLetter = "";
 		let newLetter
 		$.each( data.vocab_overview, function( key, val ) {
@@ -40,6 +40,7 @@ $(document).ready( function() {
 					$( ".current-word" ).removeClass( "current-word" );
 					$(this).addClass( "current-word" );
 					getWordDetails( val );
+					$(".dictionary-words").removeClass("active");
 				})
 			);
 		});
@@ -118,6 +119,7 @@ $(document).ready( function() {
 				$alphaLink.addClass( "empty" );
 			} else {
 				$alphaLink.on( "click" , function(){
+					$(".dictionary-words").addClass( "active" );
 					$(".dictionary-words").animate( { scrollTop : Math.abs( $(".alphabet-divider[letter='" + $(this).attr( "letter" ) + "']").position().top + $(".dictionary-words").scrollTop() ) - 30 }, function() {
 						setTimeout( function(){
 							$( ".alpha-link" ).removeClass( "selected" );
@@ -128,6 +130,10 @@ $(document).ready( function() {
 			}
 		})
 	}
+	
+	$(document).on( "click" , "body.mobile .dictionary-words .expand" , function(){
+		$(".dictionary-words").toggleClass( "active" );
+	});
 	
 	$(".dictionary-words").on( "scroll" , function(){
 		//highlight alphabet shortcut for current section
@@ -153,9 +159,17 @@ $(document).ready( function() {
 	})
 	
 	function reshapeAlphabet(){
-		//I'm sure there's a good way to calculate this exactly, but as a "fudge" this works.
-		const alphaWidth = ( Math.min( $( window ).width() , 2000 ) - ( ($(".alphabet-shortcuts li").width() + 5) * 32 ) ) / 60 ;
-		$(".alphabet-shortcuts li").css( { "padding-left" : alphaWidth , "padding-right" :alphaWidth } );
+		$("body").toggleClass("mobile" , $( window ).width() < 440 );
+		if( $( window ).width() < 440 ){ //mobile
+			$(".alphabet-shortcuts li").css( { "padding-left" : "10px" , "padding-right" :"10px" } );
+		} else if( $( window ).width() < 770 ){//tablet
+			const alphaWidth = ( $( window ).width() - ( ($(".alphabet-shortcuts li").width() + 1.5) * 32 ) ) / 60 ;
+			$(".alphabet-shortcuts li").css( { "padding-left" : alphaWidth , "padding-right" :alphaWidth } );
+		} else {
+			//I'm sure there's a good way to calculate this exactly, but as a "fudge" this works.
+			const alphaWidth = ( Math.min( $( window ).width() , 2000 ) - ( ($(".alphabet-shortcuts li").width() + 5) * 32 ) ) / 60 ;
+			$(".alphabet-shortcuts li").css( { "padding-left" : alphaWidth , "padding-right" :alphaWidth } );
+		}
 	}
 
 	

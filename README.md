@@ -9,6 +9,8 @@ v0.02 - update to readme
 
 v0.021 - add analytics
 
+v0.03 - word sort fixed (webkit) - initial mobile styling added
+
 
 # overview
 
