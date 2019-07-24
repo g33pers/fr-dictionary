@@ -1,0 +1,16 @@
+{"dir" : "ltr",
+    "lang" : "it",
+    "name" : "LanGlu French / English Dictionary",
+    "scope" : "/fr-dictionary/",
+    "display" : "browser",
+    "start_url" : "https://g33pers.github.io/fr-dictionary/",
+    "short_name" : "LanGlu FR/EN Dictionary",
+    "theme_color" : "transparent",
+    "description" : "French to English experimentatl PWA 1",
+    "orientation" : "any",
+    "background_color" : "transparent",
+    "related_applications" : "",
+    "prefer_related_applications" : "false",
+    "generated" : "true",
+    "icons" : [
+    ]}
